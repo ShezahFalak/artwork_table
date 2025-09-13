@@ -35,7 +35,7 @@ export default function Aw() {
 
   const pageNum = first / rows + 1;
 
-  // Fetch data for current page
+  
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
@@ -62,7 +62,7 @@ export default function Aw() {
     loadData();
   }, [pageNum]);
 
-  // Toggle single row
+  
   const toggleRow = (id: number, checked: boolean) => {
     if (checked) {
       if (!selectedIds.includes(id)) setSelectedIds([...selectedIds, id]);
@@ -71,7 +71,7 @@ export default function Aw() {
     }
   };
 
-  // Toggle all rows on current page
+ 
   const toggleAll = (checked: boolean) => {
     if (checked) {
       const newIds: number[] = [];
@@ -87,8 +87,7 @@ export default function Aw() {
       setSelectedIds(remaining);
     }
   };
-
-  // Are all rows on page selected?
+ 
   let allSelected = true;
   for (let i = 0; i < data.length; i++) {
     if (!selectedIds.includes(data[i].id)) {
@@ -97,7 +96,7 @@ export default function Aw() {
     }
   }
 
-  // Select N rows across pages
+  
   const selectNRows = async (n: number) => {
     if (!n || n <= 0) return;
     let selected: number[] = [];
@@ -124,8 +123,7 @@ export default function Aw() {
     }
     setSelectedIds(selected);
   };
-
-  // Header with checkbox + overlay panel
+ 
   const headerCheckbox = (
     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
       <Checkbox checked={allSelected} onChange={(e) => toggleAll(e.checked || false)} />
